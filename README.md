@@ -8,3 +8,12 @@
 下载 live-server 插件
 运行 index.html
 ```
+
+## 3、todo list
+- [] doc预览支持
+- [] xls预览支持
+- [] pdf预览支持
+- [] ppt预览支持
+- [] pic预览支持
+- [] svg预览支持
+- [] 文件下载
