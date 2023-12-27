@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>file-preview-js</title>
+  <script type="module" src="./index.js"></script>
+</head>
+
+<body>
+  <!--multiple 支持多文件同时提交 accept只接受某种类型的文件-->
+  <input type="file" id="file" name="file" multiple accept="image/*" />
+  <input type="button" value="显示文件名" onclick="showFileInfo()">
+</body>
+
+</html>
