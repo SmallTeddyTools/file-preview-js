@@ -1,0 +1,17 @@
+{
+  "name": "file-preview",
+  "version": "1.0.0",
+  "description": "all type file preview",
+  "main": "index.js",
+  "type":"module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "file",
+    "preview"
+  ],
+  "author": "SmallTeddy",
+  "license": "ISC"
+}
