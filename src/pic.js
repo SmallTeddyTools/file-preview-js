@@ -20,21 +20,3 @@ function readAsDataURL() { //文件以Data URL形式进行读入页面
     result.innerHTML = '<img src="' + this.result + '" alt=""/>'
   }
 }
-
-function readAsText() {
-  var file = document.getElementById("file").files[0]
-  let reader = new FileReader()
-  reader.readAsText(file)
-  reader.onload = function (e) {
-    result.innerHTML = this.result
-  }
-}
-
-function readAsBinaryString() {
-  var file = document.getElementById("file").files[0]
-  let reader = new FileReader()
-  reader.readAsBinaryString(file)
-  reader.onload = function (e) {
-    result.innerHTML = this.result
-  }
-}

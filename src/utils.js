@@ -4,3 +4,21 @@ const showFileInfo = () => {
   const FileList = document.querySelector("#file").files
   console.table(FileList);
 }
+
+function readAsText() {
+  var file = document.getElementById("file").files[0]
+  let reader = new FileReader()
+  reader.readAsText(file)
+  reader.onload = function (e) {
+    result.innerHTML = this.result
+  }
+}
+
+function readAsBinaryString() {
+  var file = document.getElementById("file").files[0]
+  let reader = new FileReader()
+  reader.readAsBinaryString(file)
+  reader.onload = function (e) {
+    result.innerHTML = this.result
+  }
+}

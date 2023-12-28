@@ -1,5 +1,5 @@
 const importScript = function () {
-  const srcItems = ['doc', 'pdf', 'pic', 'ppt', 'svg', 'xls']
+  const srcItems = ['doc', 'pdf', 'pic', 'ppt', 'svg', 'xls', 'utils']
   srcItems.forEach(item => {
     let script = document.createElement("script");
     script.setAttribute("type", "text/javascript");
