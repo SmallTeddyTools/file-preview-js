@@ -1,2 +1,2 @@
 // ppt
-console.log("preview ppt")
+console.log("preview ppt onload ok")

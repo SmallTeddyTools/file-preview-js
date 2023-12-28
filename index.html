@@ -9,9 +9,13 @@
 </head>
 
 <body>
-  <!--multiple 支持多文件同时提交 accept只接受某种类型的文件-->
-  <input type="file" id="file" name="file" multiple accept="image/*" />
-  <input type="button" value="显示文件名" onclick="showFileInfo()">
+  <div class="pic-preview">
+    <input type="file" name="file" id="file">
+    <input type="button" value="读取图形" onclick="readAsDataURL()">
+    <input type="button" value="读取文本文件" onclick="readAsText()">
+    <input type="button" value="读取二进制数据" onclick="readAsBinaryString()">
+    <div id="result"></div>
+  </div>
 </body>
 
 </html>

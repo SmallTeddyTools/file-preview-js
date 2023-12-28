@@ -1,4 +1,4 @@
-## 1、File Api
+## 一、File Api
 
 ### 1、定义
 
@@ -26,7 +26,7 @@ File 对象是特殊类型的 Blob，且可以用在任意的 Blob 类型的 con
 
 Blob.slice([start[, end[, contentType]]]): 返回一个新的 Blob 对象，它包含有源 Blob 对象中指定范围内的数据。
 
-## 2、Blob
+## 二、Blob
 
 ### 1、定义
 
@@ -51,3 +51,39 @@ Blob 表示的不一定是 JavaScript 原生格式的数据。File 接口基于 
 | slice | 返回一个新的 Blob 对象，包含了源 Blob 对象中指定范围内的数据。 |
 | stream | 返回一个能读取 Blob 内容的 ReadableStream。 |
 | text | 返回一个 promise，其会兑现一个包含 Blob 所有内容的 UTF-8 格式的字符串。 |
+
+### 4、代码
+
+```js
+async function handleData(data) {
+  const dataHandlers = {
+    Blob: async (data) => data,
+    Response: async (data) => await data.blob(),
+    ArrayBuffer: async (data) => new Blob([data])
+  }
+  for (const type in dataHandlers) {
+    if (data instanceof window[type]) {
+      return await dataHandlers[type](data);
+    }
+  }
+  // 处理未知类型的数据
+  return null;
+}
+```
+
+
+## 三、FileReader
+
+### 1、定义
+FileReader对象负责把文件读入内存,并且读取文件中的数据
+
+### 2、方法
+
+| 方法名 | 含义 |
+| -- | -- |
+| readAsText(Blob,type) | 将Blob对象或文件数据读取为文本数据 第二个参数是文本编码方式 默认UTF-8 |
+| readAsDataURL(Blob) | 将Blob对象或文件数据读取为二进制字符串 通常用于提交到服务器 |
+| readAsBinaryString(Blob) | 将Blob对象或文件数据读取为DataURL字符串 该方法是将数据以一种特殊格式的URL地址形式直接读入页面 |
+| readAsArrayBuffer(Blob) | 将Blob对象或文件数据读取为ArrayBuffer对象 |
+| abort() | 中断读取操作 |
+

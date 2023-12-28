@@ -1,2 +1,2 @@
 // svg
-console.log("preview svg")
+console.log("preview svg onload ok")
