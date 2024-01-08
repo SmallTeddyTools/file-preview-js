@@ -8,7 +8,7 @@
 
 通常情况下， File 对象是来自用户在一个 `<input>` 元素上选择文件后返回的 FileList 对象，也可以是来自由拖放操作生成的 DataTransfer 对象，或者来自 HTMLCanvasElement 上的 mozGetAsFile() API。
 
-File 对象是特殊类型的 Blob，且可以用在任意的 Blob 类型的 context 中。比如说， FileReader, URL.createObjectURL(), createImageBitmap() (en-US), 及 XMLHttpRequest.send() 都能处理 Blob 和 File。
+File 对象是特殊类型的 Blob，且可以用在任意的 Blob 类型的 context 中。比如说， FileReader, URL.createObjectURL(), createImageBitmap() , 及 XMLHttpRequest.send() 都能处理 Blob 和 File。
 
 ### 2、File Api 属性
 
@@ -135,30 +135,63 @@ console.log(bufView); // Uint8Array [255, 255, 255]
 
 | 方法名 | 含义 |
 | -- | -- |
-| set(array,offset) | 设置Uint8Array对象的值，和Array的set方法类似 |
-| subarray(begin,end) | 返回一个新的Uint8Array对象，包含了原始Uint8Array对象中从begin到end的元素|
-| slice(begin,end) | 返回一个新的Uint8Array对象，包含了原始Uint8Array对象中从begin到end的元素 |
-| every(callbackfn,thisArg) | 判断数组中所有元素是否都符合指定条件（通过函数提供） |
-| some(callbackfn,thisArg) | 判断数组中是否存在至少一个元素符合指定条件（通过函数提供） |
-| filter(callbackfn,thisArg) | 数组中的每个元素都执行一次callbackfn函数，并利用所有通过测试的元素的值创建一个新的数组 |
-| forEach(callbackfn,thisArg) | 数组中的每个元素都执行一次callbackfn函数 |
-| map(callbackfn,thisArg) | 数组中的每个元素都执行一次callbackfn函数，并利用每次调用callbackfn函数的结果，创建一个新的数组 |
-| join(separator) | 把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔 |
-| find(predicate,thisArg) | 找到第一个通过predicate函数判断为真的元素并返回该元素 |
-| findIndex(predicate,thisArg) | 找到第一个通过predicate函数判断为真的元素并返回其索引 |
-| fill(value,start,end) | 使用一个固定值来填充数组 |
-| keys() | 返回一个遍历器对象，用来遍历数组中的键 |
-| values() | 返回一个遍历器对象，用来遍历数组中的值 |
-| entries() | 返回一个遍历器对象，用来遍历数组中的键值对 |
-| includes(valueToFind,fromIndex) | 判断valueToFind是否存在于数组中，如果存在则返回true，否则返回false |
+| from() | 从一个数组或可迭代的对象创建一个新的Uint8Array数组，可参见Array.from() |
+| of() | 通过一个可变数目的参数创建一个新的Uint8Array数组，可参见Array.of()|
+
+> extends TypedArray
+
+| Type | Value Range | Size in bytes | Web IDL type |
+| -- | -- | -- | -- |
+| Int8Array | -128 to 127 | 1 | byte |
+| Uint8Array | 0 to 255 | 1 | octet |
+| Uint8ClampedArray | 0 to 255 | 1 | octet |
+| Int16Array | -32768 to 32767 | 2 | short |
+| Uint16Array | 0 to 65535 | 2 | unsigned short |
+| Int32Array | -2147483648 to 2147483647 | 4 | long |
+| Uint32Array | 0 to 4294967295 | 4 | unsigned long |
+| Float32Array | -3.4e38 to 3.4e38 | 4 | unrestricted float |
+| Float64Array | -1.8e308 to 1.8e308 | 8 | unrestricted double |
+| BigInt64Array | -263 to 263 - 1 | 8 | bigint |
+| BigUint64Array | 0 to 264 - 1 | 8 | bigint |
+
+| 方法名 | 含义 |
+| -- | -- |
+| at() | 返回给定索引处的数组元素。接受从最后一项往回计算的负整数。 |
+| copyWithin() | 在数组内复制数组元素序列。参见 Array.prototype.copyWithin()。 |
+| entries() | 返回一个新的数组迭代器对象，其中包含数组中每个索引的键/值对。参见 Array.prototype.entries()。 |
+| every() | 如果调用数组中的每个元素都满足测试函数，则返回 true。参见 Array.prototype.every()。 |
+| fill() | 用静态值填充数组中从开始索引到结束索引的所有元素。参见 Array.prototype.fill()。 |
+| filter() | 返回一个新数组，其中包含调用所提供的筛选函数返回为 true 的所有数组元素。参见 Array.prototype.filter()。 |
+| find() | 返回数组中满足提供的测试函数的第一个元素的值，如果没有找到合适的元素，则返回 undefined。参见 Array.prototype.find()。 |
+| findIndex() | 返回数组中满足提供的测试函数的第一个元素的索引，如果没有找到合适的元素，则返回 -1。参见 Array.prototype.findIndex()。 |
+| findLast() | 回数组中满足提供的测试函数的最后一个元素的值，如果没有找到合适的元素，则返回 undefined。参见 Array.prototype.findLast()。 |
+| findLastIndex() | 返回数组中满足所提供测试函数的最后一个元素的索引，如果没有找到合适的元素，则返回 -1。参见 Array.prototype.findLastIndex()。 |
+| forEach() | 对调用数组中的每个元素调用函数。参见 Array.prototype.forEach()。 |
+| includes() | 根据类型化数组是否包含一个确定的元素，来决定返回 true 还是 false 参见 Array.prototype.includes()。 |
+| indexOf() | 返回在调用数组中可以找到给定元素的第一个（最小）索引，如果没有找到，则返回 -1。参见 Array.prototype.indexOf()。 |
+| join() | 将数组的所有元素连接为字符串。参见 Array.prototype.join()。 |
+| keys() | 返回一个新的数组迭代器对象，该对象包含数组中每个索引的键。参见 Array.prototype.keys()。 |
+| lastIndexOf() | 返回在调用数组中可以找到给定元素的最后一个（最大）索引，如果找不到，则返回 -1。参见 Array.prototype.lastIndexOf()。 |
+| map() | 返回一个新数组，其中包含对调用数组中的每个元素调用函数的结果。参见 Array.prototype.map()。 |
+| reduce() | 对数组的每个元素（从左到右）执行用户提供的“reducer”回调函数，将其简化为单个值。参见 Array.prototype.reduce()。 |
+| reduceRight() | 对数组的每个元素（从右到左）执行用户提供的“reducer”回调函数，将其简化为单个值。参见 Array.prototype.reduceRight()。 |
+| reverse() | 反转数组元素的顺序——第一个成为最后一个，最后一个成为第一个。参见 Array.prototype.reverse()。 |
+| set() | 在类型化数组中存储多个值，从指定数组读取输入值。 |
+| slice() | 提取调用数组的一部分并返回一个新数组。参见 Array.prototype.slice()。 |
+| some() | 如果调用数组中至少有一个元素满足提供的测试函数，则返回 true。参见 Array.prototype.some()。 |
+| sort() | 对数组的元素进行排序并返回该数组。参见 Array.prototype.sort()。 |
+| subarray() | 从给定的开始和结束的元素索引返回一个新的 TypedArray。 |
+| values() | 返回一个新的数组迭代器对象，该对象包含数组中每个索引的值。参见 Array.prototype.values()。 |
+| toLocaleString() | 返回一个表示调用数组及其元素的本地化字符串。参见 Array.prototype.toLocaleString()。 |
+| toString()  | 返回一个表示调用数组及其元素的字符串。参见 Array.prototype.toString()。 |
+| iterator | 返回一个新的数组迭代器对象，该对象包含数组中每个索引的值。 |
 
 ### 3、Uint8Array 属性
 
 | 属性名 | 含义 |
 | -- | -- |
-| buffer | 返回Uint8Array对象所引用的ArrayBuffer对象 |
-| byteLength | 返回Uint8Array对象所占据的内存长度 |
-| byteOffset | 返回Uint8Array对象起始地址的偏移量 |
+| BYTES_PER_ELEMENT | 静态属性 length 一直为 0。想获知其真实长度（元素个数），请参阅 Uint8Array.prototype.length。 |
+| length | TypedArray 对象的原型。 |
 
 ## 六、TextEncoder
 
@@ -166,18 +199,18 @@ console.log(bufView); // Uint8Array [255, 255, 255]
 
 接受代码点流作为输入，并提供 UTF-8 字节流作为输出。
 
+### 2、TextEncoder 属性
+
+| 属性名 | 含义 |
+| -- | -- |
+| encoding | 总是返回 utf-8。|
+
 ### 2、TextEncoder 方法
 
 | 方法名 | 含义 |
 | -- | -- |
-| encode(input) | 返回一个包含编码后UTF-8字节流的Uint8Array对象 |
-| encodeInto(input,dest) | 返回一个包含编码后UTF-8字节流的Uint8Array对象，同时也会更新dest |
-| end(dest) | 返回一个包含编码后UTF-8字节流的Uint8Array对象，同时也会更新dest |
-| getEncoding() | 返回一个字符串，表示TextEncoder对象所使用的编码方式 |
-| encode(input) | 返回一个包含编码后UTF-8字节流的Uint8Array对象 |
-| encodeInto(input,dest) | 返回一个包含编码后UTF-8字节流的Uint8Array对象，同时也会更新dest |
-| end(dest) | 返回一个包含编码后UTF-8字节流的Uint8Array对象，同时也会更新dest |
-| getEncoding() | 返回一个字符串，表示TextEncoder对象所使用的编码方式 |
+| encode() | 接受一个字符串作为输入，返回一个包含 UTF-8 编码的文本的 Uint8Array。 |
+| encodeInto() | 接受一个字符串（编码的对象）和一个目标 Uint8Array（用于放入生成的 UTF-8 编码的文本）作为输入，并且返回一个指示编码进度的对象。此方法的性能可能会比更早出现的 encode() 方法好一些。 |
 
 ### 3、TextEncoder 构造函数
 
@@ -191,25 +224,7 @@ console.log(bufView); // Uint8Array [255, 255, 255]
 
 接口表示一个文本解码器，一个解码器只支持一种特定文本编码，例如 utf-8、iso-8859-2、koi8、cp1261，gbk 等等。解码器将字节流作为输入，并提供代码点流作为输出。
 
-### 2、TextDecoder 方法
-
-| 方法名 | 含义 |
-| -- | -- |
-| decode(input) | 返回一个包含解码后UTF8字节流的Uint8Array对象 |
-| decode(input,dest) | 返回一个包含解码后UTF-8字节流的Uint8Array对象，同时也会更新dest |
-| end(dest) | 返回一个包含解码后UTF-8字节流的Uint8Array对象，同时也会更新dest |
-| getEncoding() | 返回一个字符串，表示TextDecoder对象所使用的编码方式 |
-
-### 3、TextDecoder 构造函数
-
-| 构造函数 | 含义 |
-| -- | -- |
-| new TextDecoder(label,options) | 返回一个新的TextDecoder对象，label参数是可选的，表示TextDecoder对象的编码方式 |
-| options | 是一个可选的配置对象，它包含两个属性：fatal和ignoreBOM |
-| fatal | 是一个可选的布尔值，表示解码过程中是否发生错误，如果设置为true，解码过程中发生错误会抛出错误 |
-| ignoreBOM | 是一个可选的布尔值，表示解码过程中是否忽略BOM，如果设置为true，解码过程中会忽略BOM |
-
-### 4、TextDecoder 属性
+### 2、TextDecoder 属性
 
 | 属性名 | 含义 |
 | -- | -- |
@@ -217,11 +232,26 @@ console.log(bufView); // Uint8Array [255, 255, 255]
 | fatal | 返回一个布尔值，表示解码过程中是否发生错误 |
 | ignoreBOM | 返回一个布尔值，表示解码过程中是否忽略BOM |
 
+### 3、TextDecoder 方法
+
+| 方法名 | 含义 |
+| -- | -- |
+| decode() | 返回一个字符串，其中包含使用特定 TextDecoder 对象的方法解码的文本。 |
+
 ## 八、base64
 
 ### 1、base64 定义
 
 Base64是网络上最常见的用于传输8Bit字节码的编码方式之一，Base64就是一种基于64个可打印字符来表示二进制数据的方法。编码规则：把3个字节变成4个字节;每76个字符加一个换行符;最后的结束符也要处理。
+
+### 2、base64 方法
+
+| 方法名 | 含义 |
+| -- | -- |
+| atob(encodedString) | 返回一个解码后的字符串，表示对参数encodedString进行base-64解码 |
+| btoa(rawString) | 返回一个编码后的字符串，表示对参数rawString进行base-64编码 |
+
+> 备注： 函数 base64DecToArr(sBase64[, nBlocksSize]) 将返回 uint8Array 字节数组。如果你的目标是构建 16 位/ 32 位/ 64 位原始数据的缓冲区，使用 nBlocksSize 参数，这是 uint8Array.buffer.bytesLength 属性必须产生的字节数的倍数［1 或省略为 ASCII、二进制字符串（即字符串中的每个字符都被当作二进制数据的一个字节来处理）或 UTF-8 编码的字符串，2 用于 UTF-16 字符串，4 用于 UTF-32 字符串］。
 
 ![file-convert](/assets/imgs/file-convert.png)
 
