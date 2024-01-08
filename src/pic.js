@@ -1,22 +1,23 @@
 // pic
 console.log("preview jpg/jpeg/png onload ok")
+
 window.onload = function () {
   var result = document.getElementById("result");
   var file = document.getElementById("file")
   if (typeof FileReader == "undefined") {
-    alert('不支持')
     file.setAttribute("disabled", "disabled")
+    return console.error('不支持!')
   }
 }
-function readAsDataURL() { //文件以Data URL形式进行读入页面
-  let file = document.getElementById("file").files[0]
-  if (file.type.indexOf("image") === -1) {
-    alert('请提交图片')
-    return false
+
+function readAsDataURL() {
+  //文件以Data URL形式进行读入页面
+  const file = document.querySelector('#file').files[0]
+  console.log(file.type)
+  if (!file.type.startsWith("image")) {
+    return console.error('请提交图片!')
   }
-  let reader = new FileReader()
+  const reader = new FileReader()
   reader.readAsDataURL(file)
-  reader.onload = function (e) {
-    result.innerHTML = '<img src="' + this.result + '" alt=""/>'
-  }
+  reader.onload = e => result.innerHTML = `<img src="${e.target.result}" alt="" />`
 }

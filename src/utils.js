@@ -6,21 +6,17 @@ const showFileInfo = () => {
 }
 
 function readAsText() {
-  var file = document.getElementById("file").files[0]
-  let reader = new FileReader()
+  const file = document.querySelector('#file').files[0]
+  const reader = new FileReader()
   reader.readAsText(file)
-  reader.onload = function (e) {
-    result.innerHTML = this.result
-  }
+  reader.onload = e => result.innerHTML = e.target.result
 }
 
 function readAsBinaryString() {
-  var file = document.getElementById("file").files[0]
-  let reader = new FileReader()
+  const file = document.querySelector('#file').files[0]
+  const reader = new FileReader()
   reader.readAsBinaryString(file)
-  reader.onload = function (e) {
-    result.innerHTML = this.result
-  }
+  reader.onload = e => result.innerHTML = e.target.result
 }
 
 
